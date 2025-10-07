@@ -5,7 +5,7 @@
 **a. input data ke R**
 ```
 data_word_recall<-
-+ read.delim("https://online.stat.psu.edu/onlinecourse/sites/stat501/files/data/wordrecall.txt",header=TRUE,sep="\t")
++ read.delim("https://online.stat.psu.edu/onlinecourses/sites/stat501/files/data/wordrecall.txt",header=TRUE,sep="\t")
 ```
 
 > data_word_recall adalah variable
