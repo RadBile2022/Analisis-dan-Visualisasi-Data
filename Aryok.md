@@ -1,6 +1,7 @@
-## MODUL 2 TRANSFORMASI DATA
+<img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/0f665557-0778-446c-834a-259029b4561d" />## MODUL 2 TRANSFORMASI DATA
   ### A. TRANSFORMASI ALGORITMA
 **2. TRANSFORMASI X2 =LN(X)**
+
 
 **a. input data ke R**
 ```
@@ -69,7 +70,38 @@ menggunakan fungsi log pada package base otomatis dari software R.
 \\menggunkana transformasi data menggunakan log()
 data_word_recall$ln_time<-log(data_word_recall$time)
 ```
+
+
+
+
+
+
+--------------------------------------------------------------------------------------------------------------------------------------
+
+
+
 **2. TRANSFORMASI Y^* =LN(Y)**
+
+kita akan mengubah data kedalam Y^* =LN(Y) sebelum itu kita harus mengetahui:
+
+Apa itu Regresi?
+Regresi adalah metode statistik yang digunakan untuk memodelkan hubungan antara variabel dependen (yang ingin diprediksi) dan satu atau lebih variabel independen (faktor penentu). Tujuannya adalah:
+> Memprediksi nilai variabel dependen berdasarkan variabel independen.
+> Memahami seberapa besar pengaruh variabel independen terhadap dependen.
+
+Contoh: Dalam regresi sederhana, kita bisa memodelkan hubungan antara pendapatan (dependen) dan jam kerja (independen) dengan persamaan seperti y = a + bx, di mana y adalah pendapatan, x adalah jam kerja, a adalah intersep, dan b adalah kemiringan (koefisien).
+
+Apa itu Transformasi Logaritmik?
+Transformasi logaritmik adalah teknik mengubah data dengan mengaplikasikan fungsi logaritma (biasanya logaritma natural, $ \ln $, atau log base 10) pada variabel, baik dependen maupun independen. Tujuannya meliputi:
+Menstabilkan Varian: Mengurangi heteroskedastisitas (varians error yang tidak konstan).
+Linearisasi: Mengubah hubungan non-linier menjadi linier untuk analisis regresi.
+Interpretasi Elastisitas: Dalam model log-log, koefisien menunjukkan persentase perubahan dependen terhadap persentase perubahan independen.
+
+> apa itu ln(y), adalah logaritma natural dari y, yang dihitung menggunakan basis e (sekitar 2,718). Ini digunakan untuk mengubah skala data agar lebih stabil atau untuk menangani hubungan yang tidak linier antara variabel dependen dan independen.
+> tujuan nya untuk Menangani Heteroskedastisitas: Seperti disebutkan sebelumnya, transformasi logaritma dapat membantu menstabilkan varians error
+> Jika hubungan antara y dan x bersifat non-linier (misalnya, elastisitas), transformasi log-log membuatnya menjadi linier, sehingga cocok untuk analisis regresi linier
+
+
 **a. input data ke R**
 ```
 # Membuat data
@@ -89,6 +121,26 @@ data_kurva_pengalaman <- as.data.frame(cbind(y, x))
 summary(lm(y ~ x, data = data_kurva_pengalaman))
 
 ```
+Min: Nilai residual terkecil, yaitu -6.455 (artinya prediksi model di bawah data aktual sebesar 6.455 unit).
+1Q (Kuartil 1): 25% data memiliki residual di bawah -4.830.
+Median: Nilai tengah residual, yaitu -1.203 (menunjukkan rata-rata penyimpangan cenderung negatif).
+3Q (Kuartil 3): 75% data memiliki residual di bawah 2.435.
+Max: Nilai residual terbesar, yaitu 14.036 (artinya prediksi di bawah data aktual sebesar 14.036 unit).
+
+Arti Pentingnya:
+
+Kesesuaian Model:
+Jika residuals menyebar merata di sekitar nol (misalnya, median mendekati 0), model cukup baik.
+Dalam kasus ini, median -1.203 menunjukkan ada sedikit bias (prediksi cenderung di bawah data aktual), tapi ini masih bisa diterima tergantung konteks.
+
+
+Deteksi Masalah:
+Rentang yang lebar (dari -6.455 hingga 14.036) menunjukkan ada variasi besar dalam kesalahan prediksi. Ini bisa jadi tanda heteroskedastisitas atau data yang tidak sepenuhnya linier.
+Nilai maksimum yang jauh (14.036) mungkin menunjukkan outlier atau data yang sulit diprediksi.
+
+
+Residual Standard Error:
+Di bagian bawah output, ada "Residual standard error: 6.849 on 8 degrees of freedom". Ini adalah rata-rata kesalahan prediksi (dalam satuan data), yang menunjukkan seberapa "akurat" model secara keseluruhan. Nilai 6.849 berarti prediksi rata-rata menyimpang sekitar 6.849 unit dari data aktual.
 
 **d. Memeriksa sebaran data**
 ```
