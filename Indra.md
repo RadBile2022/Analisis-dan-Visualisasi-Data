@@ -4,4 +4,14 @@
 1. TRANSFORMASI RECIPROCAL
 
 a. input data ke R
+```
+\\masukan data menggunakan foreign
 > data_wind_speed <- foreign::read.dta("http://www.unm.edu/~schrader/biostat/bio2/Spr06/windspeed.dta")
+
+\\optional untuk menggunakan pack knitr
+install.packages("knitr")
+knitr::kable(head(data_wind_speed,25))
+\\ Jika tanpa menambkahkan variable angka di knitr::kable, maka otomatis hanya akan menampilkan 6 data saja
+
+
+```
